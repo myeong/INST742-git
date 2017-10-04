@@ -2,9 +2,33 @@
 <head>
 <!-- CSS -->
 <style type="text/css">
+	#org_table {
+		margin-top: 20px;
+		margin-left:50px;
+		height: 300px;
+		width: 200px;
+	}
+	#stat_table { 
+		margin-left:50px;
+		margin-top: 2500px;
+		height: 150px;
+		width: 50px;
+	}
 	div {
 		margin-bottom: 20px;
 	}
+	table {
+		border: 20px solid black;
+	}
+	td {
+		border: 1px solid black;
+		text-align: center;
+	}
+	tr:hover {
+		background-color:green;
+	}
+	
+
 </style>
 
 <!-- Data -->
@@ -197,18 +221,103 @@ var organizations = [
 </script>
 
 </head>
-
 <body>
 <!-- Feel free to add empty tags. Data shouldn't be here. -->
-	<div id="org_table"></div>
+
+
+<div id="org_table"></div>
+<div id="stat_table"></div>
 
 <script>
+
+
 // outputs the first item of the organizations array. Just for testing.
 console.log(organizations[0]); 
 
 // Your JavaScript code goes here
+var num = 12;
+var cells= 169;
+var high = 12;
+var rowsRemoved = 0;
+
+function buildTable() {
+	var org_table = document.getElementById('org_table');
+	var table = document.createElement("table");
+
+	for (var x = 0; x < organizations.length+1; x++) {
+		var r = document.createElement("tr");
+
+		for (var y = 0; y < 12; y++) {
+			var k = document.createElement("td");
+			//top row for titles
+			if (x == 0) {
+				var data = document.createTextNode(Object.keys(organizations[x])[y]);
+				r.style.color = "red";
+				r.style.fontWeight = "bold";
+				
+			} else {
+				var data = document.createTextNode(Object.values(organizations[x-1])[y]);
+			}
+			// if object is clicked, call hideRow function
+			k.onclick = function() {
+				hideRow(this);
+			}
+			k.appendChild(data);
+			r.appendChild(k);
+		}
+		table.appendChild(r);
+	}
+	org_table.appendChild(table);
+
+	
+}
+
+// function to delete the row
+function hideRow(x) {
+	var p = x.parentNode;
+	p.parentNode.removeChild(p);
+	num--;
+	cells -= 13;
+	high--;
+	rowsRemoved++;
+	console.log(rowsRemoved);
+	stats();
+
+}
+//function to create stats table
+function stats() {
+	var table = document.createElement("table");
+	var row1 = table.insertRow(0);
+	var row2 = table.insertRow(1);
+	var row3 = table.insertRow(2);
+	var row4 = table.insertRow(3);
+
+	var c1_1 = row1.insertCell(0);
+	var c1_2 = row1.insertCell(1);
+	var c2_1 = row2.insertCell(0);
+	var c2_2 = row2.insertCell(1);
+	var c3_1 = row3.insertCell(0);
+	var c3_2 = row3.insertCell(1);
+	var c4_1 = row4.insertCell(0);
+	var c4_2 = row4.insertCell(1);
+
+	c1_1.innerHTML = "Number of Organizations:";
+	c1_2.innerHTML = num;
+	c2_1.innerHTML = "Number of Cells:";
+	c2_2.innerHTML = cells;
+	c3_1.innerHTML = "Number of High Income Organizations:";
+	c3_2.innerHTML = high;
+	c4_1.innerHTML = "Number of Row Removed:";
+	c4_2.innerHTML = rowsRemoved;
+
+	var div = document.getElementById("stat_table");
+	div.innerHTML = "";
+	div.appendChild(table);
+}
 
 
+window.onload = buildTable();
+stats();
 </script>
 
 </body>
