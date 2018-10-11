@@ -26,7 +26,7 @@ Myeong Lee
 - Two developers are working on a software project. Developer A made changes in the code and published it to the server. The other developer B didn't know about this. He made his own changes and published it to the server. A's changes have gone since B didn't have A's changes on his laptop.
 	- Git keeps track of every change from each person, so B cannot ignore A's changes if they're using Git for the project. 
 - There is an open source project. Developer A is the organizer of the project. A made a main codebase and recruited other developers who wanted to contribute to the code. 1,000 people provided their own extensions to A, and A had a hard time reviewing all different kinds of codes. 
-	- Git has a mechanism called "folk". This allows other developers freely modify a project. Once a contributor finishes his or her work, it is possible to make a "pull request" to the project organizer so that the organizer can manage various contributions in a systematic way.  
+	- Git has a mechanism called "fork". This allows other developers freely modify a project. Once a contributor finishes his or her work, it is possible to make a "pull request" to the project organizer so that the organizer can manage various contributions in a systematic way.  
 - Student A was working on a software project. She finished two out of three assignments. Then she modified something to finish the last part. Suddenly, the whole system didn't work and the first two parts were also broken due to the latest change. It was very hard to go back to the state before starting working on the third part.
 	- Similar to the first example, Git keeps track of every code changes whenever a user "commit" his or her changes. It's very easy to go back to a previous state when something is broken.
 	- See [an example](https://github.com/myeong/DCIC-Human-Face/commits/master) of a commit history on Github.
@@ -47,8 +47,8 @@ We will use [Github](http://github.com) in this session since it is most widely 
 
 1. Branching
 	- For a Git repository, it's possible to make other branches so to keep the original codebase (useful when developing a particular feature while not wanting to break the original code).
-2. Folking
-	- If you're interested in an existing (public) project by other users, you can "folk" the project to your account. This copies the entire project to your own account so you can work freely on it. 
+2. Forking
+	- If you're interested in an existing (public) project by other users, you can "fork" the project to your account. This copies the entire project to your own account so you can work freely on it. 
 3. Basic Website
 	- Github provides a functionality that you can create a simple website that directly uses code on your Git repo.
 	- The URL convention is `http://[title].github.io`
@@ -199,10 +199,10 @@ It is possible to see graphically how your branching has been processed on the w
 Then, it shows how branches were created and merged among each other. 
 
 
-### Exercise: Folking and Contributing to the Original Code Base
-1. Go to this Git repo web page: `https://github.com/myeong/INST377`
-2. Click "Folk"
-3. Go to your folked repo. It should be something like `https://github.com/[your_id]/INST377`
+### Exercise: Forking and Contributing to the Original Code Base
+1. Go to this Git repo web page: `https://github.com/donalus/INST377`
+2. Click "Fork"
+3. Go to your forked repo. It should be something like `https://github.com/[your_id]/INST377`
 4. Clone it to your PC.
 5. Go to `git/introductions/` folder, and create a Markdown file with your last name. `[your_last_name].md`
 6. Open the file, write down any one sentence in the Markdown file, and save it. 
@@ -214,7 +214,7 @@ Then, it shows how branches were created and merged among each other.
 12. Now, your change has been applied to the original project repository.
 13. Check the registered Git addresses by typing `git remote -v`
 14. You want to pull the most recent changes to your local computer. In order to do that, your PC needs to know the address of the original repo. 
-Type `git remote add upstream https://github.com/myeong/INST377.git` 
+Type `git remote add upstream https://github.com/donalus/INST377.git` 
 15. Check again whether the original repo has been registered.
 	- `git remote -v`
 16. The original repo that you are contributing to is now registered on your local folder. 
@@ -229,27 +229,27 @@ Type `git remote add upstream https://github.com/myeong/INST377.git`
 ### Collaborating with your Colleague(s)
 For your own project, you normally use `commit` and `push` to manage your code, and you many not use other commands that much. However, Git is often used for collaboration with other colleagues. Let's do some exercises on collaborating with your friend. 
 
-1. Pair up with a colleague next to you. On the browser, go to your friend's Git repo page by typing your friend's Git repo URL. For example, you may go to `https://github.com/myeong/INST377`
-2. Click the "Folk" button at the top. 
-3. Once you folk your friend's repo, you just copied your friend's precious project to your account. 
-4. Go to your folked repo page (you can see it in your repo list on your main Git page).
+1. Pair up with a colleague next to you. On the browser, go to your friend's Git repo page by typing your friend's Git repo URL. For example, you may go to `https://github.com/donalus/INST377`
+2. Click the "Fork" button at the top. 
+3. Once you fork your friend's repo, you just copied your friend's precious project to your account. 
+4. Go to your forked repo page (you can see it in your repo list on your main Git page).
 5. Go to the terminal, get out of your original repo folder. For example: 
 
 	```
 	cd ..
 	```
-6. Clone your folked repo to your computer. The steps are same to before, but just the address of the repo is different. If not sure, follow the steps in [Cloning a Git Repo](#clone).
-7. Get into the cloned repo folder. Remember, this is a repo "folked" from your friend's account. 
+6. Clone your forked repo to your computer. The steps are same to before, but just the address of the repo is different. If not sure, follow the steps in [Cloning a Git Repo](#clone).
+7. Get into the cloned repo folder. Remember, this is a repo "forked" from your friend's account. 
 
 	```
-	cd [name of the folked repo]
+	cd [name of the forked repo]
 	```
-8. In the folked folder, there is a file that your friend created. Let's create another file. 	
-	- Open your text editor, create a new file, write something in it, and save it in the folked repo folder with your name (e.g., `[your_name].md`).
+8. In the forked folder, there is a file that your friend created. Let's create another file. 	
+	- Open your text editor, create a new file, write something in it, and save it in the forked repo folder with your name (e.g., `[your_name].md`).
 	- Add, commit, and push your change. 
-	- Once pushing your changes, your file is uploaded to your folked Git repo, not your friend's repo. But you want to give your changes to your friend.
-9. Go to the web page of your folked repo. There is a button called "New Pull Request". Click it. 
-10. You will see "base fork" and "head fork" in the web page. "Base fork" is the original repo that you want to contribute to (in this case, your friend's repo). "Head fork" is your folked repo that you just made changes. You are basically trying to ask your friend to merge your changes.
+	- Once pushing your changes, your file is uploaded to your forked Git repo, not your friend's repo. But you want to give your changes to your friend.
+9. Go to the web page of your forked repo. There is a button called "New Pull Request". Click it. 
+10. You will see "base fork" and "head fork" in the web page. "Base fork" is the original repo that you want to contribute to (in this case, your friend's repo). "Head fork" is your forked repo that you just made changes. You are basically trying to ask your friend to merge your changes.
 11. If you see the "Create Pull Request" button (in green), click it. Then, you can write down a message about your contribution. Once you make a pull-request, your friend will receive the request from his or her email or on the Github website. **Now, as a contributor, your work is done.** 
 12. As an original project owner, you receive a pull request from your friend. In your original project repo page, you can see there is one pull request. Click "Pull requests" menu. 
 13. You can see your friend's message. If you have any opinion, you can comment on it as well. This conversation can go on as a thread. Once you're satisfied with your friend's contribution, click the `Merge Pull Request` button. Don't click `Comment and Close` button unless you don't want to merge it. Subsequenlty, it is possible that you need to click `Confirm merge` to complete the merge. 
@@ -258,7 +258,7 @@ For your own project, you normally use `commit` and `push` to manage your code, 
 ### Pulling Your Repo (Github &rarr; Your PC, whenever there're any changes on Github)
 Your Git repo has been contributed by your friend, but your computer still doesn't have your friend's contribution, because you accepted your friend's pull request online and never downloaded the new changes onto your computer. In this case, you need to "pull" the up-to-date changes. 
 
-1. Go to your original repo folder on your computer (not the folked repo folder) using the `cd` command.
+1. Go to your original repo folder on your computer (not the forked repo folder) using the `cd` command.
 2. Type this:
 
 	```
