@@ -201,12 +201,113 @@ var organizations = [
 <body>
 <!-- Feel free to add empty tags. Data shouldn't be here. -->
 	<div id="org_table"></div>
-
+	<table id="org_table_two"></table>
 <script>
 // outputs the first item of the organizations array. Just for testing.
 console.log(organizations[0]); 
-hey
-// Your JavaScript code goes here
+var i=0
+var count_one=0;
+var count_two=0;
+var count_three=0;
+var count_four=0;
+var count_five=0;
+for (i=0;i<organizations.length;i++){
+
+	if (organizations[i]["Organization Type"]=== 'Nonprofit'){
+
+		 count_one++;
+
+	}
+
+	 if (organizations[i]["Founding Year"] <= 2008){
+		count_two++;
+
+	}
+
+	 if (organizations[i]["Region"] === 'North America' ){
+		count_three++;
+
+	}
+
+	if (organizations[i]["Type of Data Used"] ==='Transportation' ){
+		count_four++;
+
+	}
+
+	if (organizations[i]["Size"] != '1 to 10' ){
+		count_five++;
+
+}
+}
+var the_table=document.getElementById("org_table_two");
+
+
+
+
+
+
+var header = the_table.createTHead();
+var row = header.insertRow(0);
+var cell = row.insertCell(0);
+cell.innerHTML = "<b>Questions </b>";
+
+
+
+
+
+
+var cell_two = row.insertCell(1);
+cell_two.innerHTML = "<b>Number</b>";
+
+var row_one=the_table.insertRow(1);
+var question_one=row_one.insertCell(0);
+var non_profit_org=row_one.insertCell(1);
+question_one.innerHTML="# of non profit?";
+non_profit_org.innerHTML=count_one;
+
+
+
+
+
+
+var row_two=the_table.insertRow(2);
+var question_two=row_two.insertCell(0);
+var answer_two=row_two.insertCell(1);
+question_two.innerHTML="North American";
+answer_two.innerHTML=count_three;
+
+
+
+
+
+
+var row_three=the_table.insertRow(3);
+var question_three=row_three.insertCell(0);
+var answer_three=row_three.insertCell(1);
+question_three.innerHTML="Less than 10 years old?";
+answer_three.innerHTML=count_two;
+
+
+
+
+
+
+var row_four=the_table.insertRow(4);
+var question_four=row_four.insertCell(0);
+var answer_four=row_four.insertCell(1);
+question_four.innerHTML="Transportation type?";
+answer_four.innerHTML=count_four;
+
+
+
+
+
+
+var row_five=the_table.insertRow(5);
+var question_five=row_five.insertCell(0);
+var answer_five=row_five.insertCell(1);
+question_five.innerHTML="How many small orgs?";
+answer_five.innerHTML=count_five;
 
 
 </script>
